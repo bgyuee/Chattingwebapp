@@ -1,0 +1,77 @@
+/* header.scss */
+.header {
+  position: fixed;
+  z-index: 10;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 64px;
+  display: flex;
+  flex-direction: column;
+  background: #513736;
+  color: #fff;
+  padding: 0 15px;
+  box-sizing: border-box;
+  .status_bar {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    height: 37.5%;
+  }
+  .status_bar > div {
+    flex: 1;
+  }
+  .status_bar > div:nth-child(1) {
+    text-align: left;
+  }
+  .status_bar > div:nth-child(2) {
+    text-align: center;
+  }
+  .status_bar > div:nth-child(3) {
+    display: flex;
+    justify-content: right;
+    align-items: center;
+    text-align: right;
+  }
+  .status_bar > div > * {
+    padding: 3px;
+  } /*div안에 모든자식에 padding*/
+  
+  .title_bar {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    height: 62.5%;
+  }
+  .title_bar > * {
+    flex: 1;
+    font-size: 16px;
+  }
+  .title_bar > h1 {
+    order: 2;
+    text-align: center;
+  }
+  .title_bar > h1 > span {
+    color: #f8ea65;
+  }
+  .title_bar > .left_item {
+    order: 1;
+    text-align: left;
+  }
+  .title_bar > .left_item > a {
+    color: #fff;
+    opacity: 0.5;
+  }
+  .title_bar > .right_item {
+    order: 3;
+    text-align: right;
+    font-size: 20px;
+  }
+  .title_bar > .right_item > a {
+    color: #fff;
+  }
+}
+
+
