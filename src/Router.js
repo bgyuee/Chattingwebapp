@@ -11,13 +11,14 @@ import Myprofile from "routes/Myprofile";
 import userList from "data/mock.json";
 
 function AppRouter({isLoggedIn, userObj}) {
+
   return (
     <BrowserRouter>
       <Routes>
         {isLoggedIn ? (<Route path='/' element={<Main userList={userList} />} />) : (<Route path='/' element={<Auth />} />)}
         <Route path="/chats" element={<Chats userList={userList} />} />
-        <Route path="/chatting" element={<Chatting userObj={userObj} />} />
-        <Route path="/chatting/:id" element={<Chatting />} />
+        {/* <Route path="/chatting" element={<Chatting userObj={userObj} />} /> */}
+        <Route path="/chatting/:id" element={<Chatting userObj={userObj} />} />
         <Route path="/find" element={<Find />} />
         <Route path="/more" element={<More />} />
         <Route path="/profile" element={<Profile userList={userList} />} />

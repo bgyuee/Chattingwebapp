@@ -22,7 +22,7 @@ function Chats({userList}) {
           <ul>
           {userList.map((user,index) => 
               <li>
-              <Link to={"/chatting"} state={{name: user.name, id: user.id, email: user.email, img: user.images, comment:user.comment, index}}>
+              <Link to={`/chatting/${index}`} state={{name: user.name, id: user.id, email: user.email, img: user.images, comment:user.comment, index}}>
                 <span className="chats_img empty" style={{backgroundImage: `url(${user.images}`}}></span>
                 <span className="chats_cont">
                   <span className="chats_name">{user.name}</span>
