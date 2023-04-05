@@ -15,15 +15,19 @@ function AppRouter({isLoggedIn, userObj}) {
   return (
     <BrowserRouter>
       <Routes>
-        {isLoggedIn ? (<Route path='/' element={<Main userList={userList} />} />) : (<Route path='/' element={<Auth />} />)}
-        <Route path="/chats" element={<Chats userList={userList} />} />
-        {/* <Route path="/chatting" element={<Chatting userObj={userObj} />} /> */}
-        <Route path="/chatting/:id" element={<Chatting userObj={userObj} />} />
-        <Route path="/find" element={<Find />} />
-        <Route path="/more" element={<More />} />
-        <Route path="/profile" element={<Profile userList={userList} />} />
-        <Route path="/myprofile" element={<Myprofile />} />
-        <Route path="/profile/:id" element={<Profile />} />
+        {isLoggedIn ? 
+        <>
+          (<Route path='/' element={<Main userList={userList} userObj={userObj}/>} />) 
+          <Route path="/chats" element={<Chats userList={userList} />} />
+          <Route path="/chatting/:id" element={<Chatting userObj={userObj} />} />
+          <Route path="/find" element={<Find />} />
+          <Route path="/more" element={<More />} />
+          <Route path="/profile" element={<Profile userList={userList} />} />
+          <Route path="/myprofile" element={<Myprofile userObj={userObj} />} />
+          <Route path="/profile/:id" element={<Profile />} />
+        </>
+        : (<Route path='/' element={<Auth />} />)}
+       
       </Routes>
     </BrowserRouter>
   )

@@ -8,7 +8,7 @@ import "styles/header.scss";
 import { MdSettingsSuggest,} from "react-icons/md";
 
 
-function Main({ userList }) {
+function Main({ userList, userObj }) {
   console.log(userList);
     const a = <>Friends <span>1</span></>
     const b = <Link to={"#"} style={{color: "#b6b5b1"}}>Manage</Link>;
@@ -25,8 +25,8 @@ function Main({ userList }) {
           <ul>
           <li>
               <Link to={`/myprofile`}>
-                <span className="profile_img empty"></span>
-                <span className="profile_name">박규엽</span>
+                <span className="profile_img empty" style={{backgroundImage: `url(${userObj.photoURL})`}}></span>
+                <span className="profile_name">{userObj.displayName}</span>
                 <span className="profile_messages">
                   집에 가고싶다
                 </span>
