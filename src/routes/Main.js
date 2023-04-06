@@ -25,11 +25,9 @@ function Main({ userList, userObj }) {
           <ul>
           <li>
               <Link to={`/myprofile`}>
-                <span className="profile_img empty" style={{backgroundImage: `url(${userObj.photoURL})`}}></span>
+                <span className="profile_img empty" style={userObj.photoURL? {backgroundImage:`url(${userObj.photoURL})`} : {backgroundImage:''}}></span>
                 <span className="profile_name">{userObj.displayName}</span>
-                <span className="profile_messages">
-                  집에 가고싶다
-                </span>
+                <span className="profile_messages">미쳐야 미친다</span>
               </Link>
             </li>
           </ul>

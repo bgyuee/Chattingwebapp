@@ -60,16 +60,18 @@ function Chatting({userObj}) {
 
   const onSubmit = async (e) => {
     e.preventDefault();
-    if(!talk) return; //talk내용 없으면 하지마라
+
     try { //성공시
+
       let attachmentUrl = ""; //이미지 다운로드
+
       if(attachment !==""){
+
         const storageRef = ref(storage, `${userObj.uid}/${uuidv4()}`);//스토리지는 자기가 직접 id를 지정해줘야한다 그래서 uuid함수를 통해 유니크한 id를 지정해줘서 업로드
         const response = await uploadString(storageRef, attachment, 'data_url') ////attachment state에 이미지 url이 저장되어있기때문에 넣어준다
         console.log('response->', response);
         attachmentUrl = await getDownloadURL(ref(storage, response.ref)); // response.ref안에 생성한 URL을 attachmentUrl 변수에 담겠다.
       }
-
 
       const docRef = await addDoc(collection(db, "talks"), {// talks라는 컬렉션을 만듬
         text: talk,

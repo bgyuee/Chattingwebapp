@@ -57,7 +57,7 @@ function Chatbox(props) {
       </form>
       <button onClick={toggleEditing}>취소</button>
     </>) : (<></>)}
-      <span className='chat'>{text}</span>
+      {text && <span className='chat'>{text}</span>}
       {attachmentUrl !== "" && (
           <img src={attachmentUrl} width='50' height='50' alt=''/>
       )}

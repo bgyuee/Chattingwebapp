@@ -8,6 +8,7 @@ import { updateProfile } from "firebase/auth";
 import { storage } from "fbase";
 import { v4 as uuidv4 } from 'uuid';
 import { deleteObject, getDownloadURL, ref, uploadString } from "firebase/storage";
+import Background from "components/Background";
 
 function Myprofile({userObj}) {
 
@@ -43,7 +44,7 @@ function Myprofile({userObj}) {
  const onSubmit = async (e) => {
   e.preventDefault();
   let attachmentUrl = "";
-  if (attachment !== userObj.photoURL) { // 새 이미지를 업로드한 경우에만 실행합니다.
+  if (attachment !== userObj.photoURL) { // 새 이미지를 업로드한 경우에만 실행한다
     const storageRef = ref(storage, `${userObj.uid}/${uuidv4()}`);
     const response = await uploadString(storageRef, attachment, 'data_url');
     attachmentUrl = await getDownloadURL(ref(storage, response.ref));
@@ -60,53 +61,50 @@ function Myprofile({userObj}) {
     if(attachment !=="") {
       const desertRef = ref(storage, attachment);
       await deleteObject(desertRef);
-      setAttachment("images/empty.jpg");
+      await updateProfile(userObj, {
+        photoURL: "",
+      })
     }
+    setAttachment("");
    }
   }
 
+
   return (
     <div className="profile_body">
-      <Header a={a} b={b} c={c}/>
+      <Header a={a} b={b} c={c} style={{backgroundColor : "transparent"}}/>
       <main>
-        <section className="background">
-          <h2 className="blind">My porifile background image</h2>
-        </section>
+        <Background userObj={userObj} />
         <section className="profile">
           <h2 className="blind">my profile info</h2>
-          <div className="profile_imges empty" style={{backgroundImage: `url(${attachment})`}}></div>
+          <div className="profile_imges empty" style={attachment? {backgroundImage:`url(${attachment})`} : {backgroundImage:''}}></div>
           <div className="profile_cont">
-            <span className="profile_name">{newDisplayName}</span>
-            <input
-              type="email"
-              className="profile_email"
-              placeholder="bgyuee@gmail.com"
-            />
-            <form onSubmit={onSubmit}>
-              <input type="text" onChange={onChange} value={newDisplayName} placeholder={userObj.displayName} />
-              <input type="file" accept="image/*" onChange={onFilechange}/>
-              <button type="submit">수정하기</button>
-            </form>
-            {attachment && (
+          {attachment && (
               <>
                 <button onClick={onDeleteClick}>프로필사진 삭제</button>
               </>
             )}
+            <span className="profile_name">{newDisplayName}</span>
+            <input type="text" className="state_message" placeholder="미쳐야 미친다" />
+            <form onSubmit={onSubmit}>
+              <input type="text" onChange={onChange} value={newDisplayName} placeholder={userObj.displayName} />
+              <input type="file" accept="image/*" onChange={onFilechange} />
+            </form>
             <ul className="profile_menu">
               <li>
                 <Link to={"#"}>
                   <span className="icon">
                     <FaComment />
                   </span>
-                  My Chatroom
+                  나와의 채팅
                 </Link>
               </li>
               <li>
-                <Link to={"#"}>
+                <Link to={"#"} onClick={onSubmit}>
                   <span className="icon">
                     <FaPencilAlt />
                   </span>
-                  Edit Profile
+                  프로필 수정
                 </Link>
               </li>
             </ul>

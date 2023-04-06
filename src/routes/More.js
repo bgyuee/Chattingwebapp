@@ -12,7 +12,12 @@ import { HiAcademicCap } from "react-icons/hi2";
 import 'styles/more.scss';
 import { authService } from 'fbase';
 
-function More() {
+function More(props) {
+  console.log('props ===>', props);
+  const {displayName, photoURL} = props.userObj;
+  
+  
+
   const a = <>More</>
   const c = <Link to={"#"}><MdSettingsSuggest /></Link>;
 
@@ -30,20 +35,20 @@ function More() {
     <main className='more_main'>
       <section className='user_info'>
         <h2 className='blind'>사용자 정보</h2>
-        <span className='profile_img empty'></span>
+        <span className='profile_img empty' style={photoURL? {backgroundImage:`url(${photoURL})`} : {backgroundImage:''}}></span>
         <span className='profile_info'>
-          <span className='profile_name'>My Name</span>
-          <span className='profile_email'>Userid@gmail.com</span>
+          <span className='profile_name'>{displayName}</span>
+          <span className='profile_email'>pky5396@gmail.com</span>
         </span>
         <span className='logout'><button onClick={onLogOutClick}><FiLogOut /></button></span>
       </section>
       <section className='user_menu'>
         <h2 className='blind'>사용자 메뉴</h2>
         <ul>
-          <li><Link for={"#"}><FaSmile />Emoticons</Link></li>
-          <li><Link for={"#"}><FaPaintBrush />Themes</Link></li>
-          <li><Link for={"#"}><FaHandPeace />Plus Friends</Link></li>
-          <li><Link for={"#"}><FaUserCircle />Account</Link></li>
+          <li><Link to={"#"}><FaSmile />Emoticons</Link></li>
+          <li><Link to={"#"}><FaPaintBrush />Themes</Link></li>
+          <li><Link to={"#"}><FaHandPeace />Plus Friends</Link></li>
+          <li><Link to={"#"}><FaUserCircle />Account</Link></li>
         </ul>
       </section>
       <section className='plus_friends'>

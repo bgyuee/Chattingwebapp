@@ -21,6 +21,7 @@ function Header({ a, b, c, style }) {
   if (c === undefined) {
     c = "";
   }
+  
 
   return (
     <div className="header" style={style}>

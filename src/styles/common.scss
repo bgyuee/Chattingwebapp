@@ -1,8 +1,9 @@
 @import url(reset.scss);
 
 body {
-
   font-size: 12px;
+  background: url(../images/background.jpg) no-repeat 0 0;
+  background-size: cover;
 }
 
 a:link,

@@ -7,6 +7,7 @@ import Header from 'components/Header';
 
 
 function Auth() {
+
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [newAccount, setNewAccount] = useState('true'); //true:회원가입, false:로그인

@@ -11,17 +11,8 @@ main {
 }
 
 /* main_section */
-.main_section > header {
-  height: 32px;
-  line-height: 32px;
-  padding-left: 15px;
-  border: 1px solid #ebebeb;
-  border-left: none;
-  border-right: none;
-  color: #b6b5b1;
-}
-
 .main_section > ul {
+  background-color: #d0e6fd;
   display: flex;
   flex-direction: column;
 }
