@@ -8,7 +8,7 @@ import "styles/chat.scss";
 
 function Chats({userList}) {
   
-  const a = <Link to={"#"}>Chats <span>1</span></Link>
+  const a = <Link to={"#"}>Chats <span>{userList.length}</span></Link>
   const b = <Link to={"#"}>Edit</Link>
   return (
     <>
@@ -22,7 +22,7 @@ function Chats({userList}) {
           <ul>
           {userList.map((user,index) => 
               <li>
-              <Link to={`/chatting/${index}`} state={{name: user.name, id: user.id, email: user.email, img: user.images, comment:user.comment, index}}>
+              <Link to={`/chatting/${user.id}`} state={{name: user.name, id: user.id, email: user.email, img: user.images, comment:user.comment}}>
                 <span className="chats_img empty" style={{backgroundImage: `url(${user.images}`}}></span>
                 <span className="chats_cont">
                   <span className="chats_name">{user.name}</span>

@@ -10,7 +10,7 @@ import { MdSettingsSuggest,} from "react-icons/md";
 
 function Main({ userList, userObj }) {
   console.log(userList);
-    const a = <>Friends <span>1</span></>
+    const a = <>Friends <span>{userList.length}</span></>
     const b = <Link to={"#"} style={{color: "#b6b5b1"}}>Manage</Link>;
     const c = <Link to={"#"}><MdSettingsSuggest /></Link>;
   return (
@@ -38,8 +38,16 @@ function Main({ userList, userObj }) {
           </header>
           <ul>
           {userList.map((user,index) => 
-               <li key={index}>
-               <Link to={"/profile"} state={{name: user.name, id: user.id, email: user.email, img: user.images, comment:user.comment, index:index}}>
+               <li key={user.id}>
+               <Link to={"/profile"} state={
+                {
+                  name: user.name,
+                  id: user.id,
+                  email: user.email,
+                  img: user.images,
+                  comment:user.comment,
+                  index:index
+                }}>
                  <span className="profile_img empty" style={{backgroundImage: `url(${user.images}`}}></span>
                  <span className="profile_name">{user.name}</span>
                  <span className="profile_messages">{user.profilemessages}</span>

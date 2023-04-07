@@ -46,7 +46,7 @@ function Profile() {
             />
             <ul className="profile_menu">
               <li>
-                <Link to={`/chatting/${index}`} state={{name, id, email, img, comment, index}}>
+                <Link to={`/chatting/${id}`} state={{name, id, email, img, comment, index}}>
                   <span className="icon">
                   <FaComment />
                   </span>

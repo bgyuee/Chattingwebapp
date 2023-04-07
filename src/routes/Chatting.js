@@ -12,7 +12,7 @@ import "styles/chatting.scss";
 
 
 function Chatting({userObj}) {
-  console.log(userObj);
+  console.log('userObj -@@@@@@@', userObj);
   /*style*/
   const a = <>Friends <span>1</span></>;
   const bStyle = { color: "#000", opacity: 1, fontSize: 24, paddingLeft: 5 };
@@ -22,7 +22,7 @@ function Chatting({userObj}) {
   const Headerstyle = { color: "#000", backgroundColor: "#a1c0d5", borderBottom: "1px solid #96acba"};
    /*링크로 데이터 받아옴*/
    const location = useLocation();
-   const {name, id, email, img, comment, index} = location.state;
+   const {name, id, email, img, comment} = location.state;
  
    //comment배열에서 각각의 comment 적용 일단 상대방채팅에 적용
    const commentList = comment.map((comment, index) => (
@@ -37,11 +37,13 @@ function Chatting({userObj}) {
   const [talk, setTalk] = useState(''); //firebase안으로 데이터를 넣는다
   const [talks, setTalks] = useState([]); //querySnapshot에서 데이터들을 배열로 하나하나 들고오겠다.
   const [attachment, setAttachment] = useState(''); //공백문자도 처음에는 false
-  
+  // const filterTalks = talks.filter(talk => talk.id === userListId);
+  // console.log('filterTalks --->>>>', filterTalks);
+  console.log('talk 왜안대ㅐㅐㅐㅐㅐㅐㅐㅐㅐㅐㅐ', talks);
   
   // talks섹션안에 있는 db들을 가져오고 createdAt값들을 내림차순으로 정렬한다 desc는 내림차순 asc는 오름차순
   useEffect(() => {
-    const q = query(collection(db, "talks"),
+    const q = query(collection(db, `talk${id}${userObj.uid}`),
               orderBy("createdAt", "asc")); //createdAt라는 속성을 오름차순으로 정렬
     const unsubscribe = onSnapshot(q, (querySnapshot) => { //데이터 실시간 수신 (querySnapshot)안에 스냅샷찍은게 다들어온다
       const newArray = [];
@@ -60,31 +62,36 @@ function Chatting({userObj}) {
 
   const onSubmit = async (e) => {
     e.preventDefault();
-
-    try { //성공시
-
-      let attachmentUrl = ""; //이미지 다운로드
-
-      if(attachment !==""){
-
-        const storageRef = ref(storage, `${userObj.uid}/${uuidv4()}`);//스토리지는 자기가 직접 id를 지정해줘야한다 그래서 uuid함수를 통해 유니크한 id를 지정해줘서 업로드
-        const response = await uploadString(storageRef, attachment, 'data_url') ////attachment state에 이미지 url이 저장되어있기때문에 넣어준다
-        console.log('response->', response);
-        attachmentUrl = await getDownloadURL(ref(storage, response.ref)); // response.ref안에 생성한 URL을 attachmentUrl 변수에 담겠다.
+  
+    if (!talk && !attachment) {
+      return; // talk와 attachment가 모두 비어있는 경우 함수를 빠져나온다.
+    }
+  
+    try {
+      let attachmentUrl = '';
+  
+      if (attachment) {
+        const storageRef = ref(storage, `${userObj.uid}/${uuidv4()}`);
+        const response = await uploadString(storageRef, attachment, 'data_url');
+        attachmentUrl = await getDownloadURL(ref(storage, response.ref));
       }
-
-      const docRef = await addDoc(collection(db, "talks"), {// talks라는 컬렉션을 만듬
+  
+      const docRef = await addDoc(collection(db, `talk${id}${userObj.uid}`), {
         text: talk,
         createdAt: Date.now(),
-        creatorId: userObj.uid, //문서를 누가 작성했느냐를 알기위해서 Id를 지정해준다.
-        attachmentUrl
+        creatorId: userObj.uid,
+        attachmentUrl,
       });
+  
       console.log("Document written with ID: ", docRef.id);
-    } catch (e) { //실패시
+    } catch (e) {
       console.error("Error adding document: ", e);
     }
+  
     setTalk('');
+    setAttachment('');
   }
+  
 
   const onFilechange = (e) => {
     console.log('e->', e);
@@ -107,7 +114,6 @@ function Chatting({userObj}) {
     setAttachment("");
   }
 
-  
   return (
     <body className="chatting_body">
       <Header style={Headerstyle} a={a} b={b} c={c}/>
@@ -115,7 +121,7 @@ function Chatting({userObj}) {
         <span className="date_info">Thursday,March 23, 2023</span>
         <div className="chat_box other">
           <div className="other_info">
-           <Link to={`/profile/${index}`} state={{name,id,email,img,comment,index}}>
+           <Link to={`/profile/${id}`} state={{name,id,email,img,comment}}>
               <span className="profile_img empty" style={{backgroundImage: `url(${img}`}} ></span>
             </Link>
             <span className="profile_name">{name}</span>
@@ -126,7 +132,7 @@ function Chatting({userObj}) {
           </span>
         </div>
         {talks.map(talk => 
-        <Chatbox className="chat_box my" talkObj={talk} isOwner={talk.creatorId === userObj.uid} />
+        <Chatbox key={id} className="chat_box my" talkObj={talk} userListId={id} userObj={userObj} isOwner={talk.creatorId === userObj.uid} />
          )}
       </main>
       <footer>
@@ -138,7 +144,7 @@ function Chatting({userObj}) {
         <form action="/" method="post" onSubmit={onSubmit}>
           <fieldset className="text_box">
             <legend className="blind">채팅 입력창</legend>
-            <label for="chatting" className="blind">
+            <label htmlFor="chatting" className="blind">
               채팅입력
             </label>
             <input type="text" id="chatting" className="text_field" value={talk} onChange={onChange}/>
