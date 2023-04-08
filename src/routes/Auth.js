@@ -5,7 +5,6 @@ import { createUserWithEmailAndPassword, signInWithEmailAndPassword, GoogleAuthP
 import auth from 'styles/auth.scss'
 import Header from 'components/Header';
 
-
 function Auth() {
 
   const [email, setEmail] = useState('');
@@ -54,22 +53,27 @@ function Auth() {
   }
   return (
     <div className='auth_wrap'>
-      <Header />
-      <div className='ayth_content'>
+      <h2>LOGIN</h2>
+      <Header style={{backgroundColor : "transparent"}} />
+      <div className='auth_content'>
         <form onSubmit={onSubmit}>
-          <input name='email' type='email' placeholder='Email' required 
+          <input className='auth_email' name='email' type='email' placeholder='이메일' required 
            value={email} onChange={onChange} />
-          <input name='password' type='password' placeholder='Password' required 
-           value={password} onChange={onChange} />
-          <input type='submit' value={newAccount ? "계정만들기":"로그인"} />
+          <input className='auth_passwword' name='password' type='password' placeholder='비밀번호' required 
+           value={password} onChange={onChange} />  
+          <input className='auth_submit' type='submit' value={newAccount ? "회원가입":"로그인"} />
         </form>
-        <span onClick={toggleAccount} style={{cursor:"pointer"}}>
-          {newAccount ? "로그인" : "계정만들기"}
+        <span className='auth_convert' onClick={toggleAccount} >
+          {newAccount ? "로그인" : "회원가입"}
         </span>
-        <div>
-          <button name='google' onClick={onSocialClick}>Continue with Google</button>
-          <button name='github' onClick={onSocialClick}>Continue with Github</button>
-      </div>
+        <div className='auth_another'>
+          <button className='auth_google' name='google' onClick={onSocialClick}>
+            {newAccount ? "구글 회원가입" : "구글 로그인"}
+          </button>
+          <button className='auth_github' name='github' onClick={onSocialClick}>
+            {newAccount ? "깃허브 회원가입" : "깃허브 로그인"}
+          </button>
+        </div>
       </div>
     </div>
   )

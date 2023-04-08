@@ -92,7 +92,7 @@ function Myprofile({userObj}) {
             </form>
             <ul className="profile_menu">
               <li>
-                <Link to={"#"}>
+                <Link>
                   <span className="icon">
                     <FaComment />
                   </span>
@@ -100,7 +100,7 @@ function Myprofile({userObj}) {
                 </Link>
               </li>
               <li>
-                <Link to={"#"} onClick={onSubmit}>
+                <Link onClick={onSubmit}>
                   <span className="icon">
                     <FaPencilAlt />
                   </span>

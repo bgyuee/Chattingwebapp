@@ -48,7 +48,7 @@ function Background({userObj}) {
         const response = await uploadString(storageRef, attachment, 'data_url') ////attachment state에 이미지 url이 저장되어있기때문에 넣어준다
         attachmentUrl = await getDownloadURL(ref(storage, response.ref)); // response.ref안에 생성한 URL을 attachmentUrl 변수에 담겠다.
       }
-      const docRef = await addDoc(collection(db, `${userObj.uid}backgroundImg`), {// talks라는 컬렉션을 만듬
+      const docRef = await addDoc(collection(db, `${userObj.uid}backgroundImg`), {// `${userObj.uid}backgroundImg`}라는 이름으로 컬렉션을 정하고 거기에다가 저장하겠다
         creatorId: userObj.uid, //문서를 누가 작성했느냐를 알기위해서 Id를 지정해준다.
         createdAt: Date.now(),
         attachmentUrl

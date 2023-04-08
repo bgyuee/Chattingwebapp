@@ -1,13 +1,107 @@
 @import url(common.scss);
-div.auth_wrap{
+.auth_wrap{
   position: relative;
   width: 100%;
   height: 100%;
-  >div.ayth_content{
+
+    h2{
+      position: absolute;
+      top: 20%;
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: 50px;
+      font-weight: 700;
+      color: #40bfb7;
+    }
+
+   .auth_content{
     position: absolute;
-    top: calc(50% - 35px);
-    left: calc(50% - 90px);
-    width: 180px;
-    height: 70px;
+    top: 30%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 85%;
+
+    input, button{
+      width: 100%;
+      border: none;
+      border-radius: 6px;
+    }
+    
+    .auth_email, .auth_passwword{
+      position: relative;
+      margin-bottom: 10px;
+      padding-left: 10px;
+      height: 50px;
+      &:focus{
+        outline-color: #40bfb7;
+      }
+      &[value]{
+        font-size: 20px;
+        color: #40bfb7;
+      }
+    }
+      .auth_email::placeholder, .auth_passwword::placeholder{
+        position: absolute;
+        top: calc(50% - 12.5px);
+        left: 10px;
+        font-size: 20px;
+      } 
+    .auth_submit{
+      margin: 10px 0;
+      width: 100%;
+      height: 50px;
+      border-radius: 50px;
+      background-color: #000;
+      color: #fff;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.1s ease-in-out 0s;
+        &:hover{
+          background-color: #40bfb7;
+        }
+    }
+
+    .auth_convert{
+      position: absolute;
+      right: 0;
+      text-decoration: underline;
+      font-size: 15px;
+      font-weight: 600;
+      color: #000;
+      cursor: pointer;
+        &:hover{color: #40bfb7;}
+    }
+
+    .auth_another{
+      display: flex;
+      justify-content: space-between;
+      margin-top: 30px;
+      width: 100%;
+      height: 65px;
+        button{
+          width: 48%;
+          height: 100%;
+          cursor: pointer;
+          text-indent: -9999px;
+          overflow: hidden;
+          border-radius: 50px;
+          opacity: 0.8;
+          border: 2px solid #fff;
+          box-sizing: border-box;
+          transition: all 0.1s ease-in-out 0s;
+            &:hover{
+              opacity: 1;
+              border: 2px solid #40bfb7;
+            }
+          &.auth_google{
+            background: url(../images/google.png) no-repeat 50% 50%, #fff;
+            background-size: cover;
+          }
+          &.auth_github{
+            background: url(../images/github.png) no-repeat 50% 50%;
+            background-size: cover;
+          }
+        }
+    }
   }
 }
