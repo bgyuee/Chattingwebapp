@@ -3,7 +3,8 @@ import { addDoc, collection, deleteDoc, doc, getDocs, onSnapshot, orderBy, query
 import { deleteObject, getDownloadURL, ref, uploadString } from 'firebase/storage';
 import React, { useEffect, useState } from 'react';
 import { v4 as uuidv4 } from 'uuid';
-import backgroundImg from '../images/bg_default.png'
+import backgroundImg from '../images/bg_default.jpg'
+import "styles/background.scss";
 
 function Background({userObj}) {
   const [attachment, setAttachment] = useState(backgroundImg);

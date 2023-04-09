@@ -8,7 +8,7 @@ import "styles/profile.scss";
 function Profile() {
   const location = useLocation();
   console.log(location);
-  const { name, id, email, img, comment, index } = location.state;
+  const { name, id, email, img, comment, index, profilemessages } = location.state;
 
   const navigate = useNavigate();
 
@@ -29,7 +29,7 @@ function Profile() {
 
   return (
     <body className="profile_body">
-      <Header a={a} b={b} c={c} />
+      <Header a={a} b={b} c={c} style={{backgroundColor : "transparent"}} />
       <main>
         <section className="background" style={{ backgroundImage: `url(${img}` }}>
           <h2 className="blind">My porifile background image</h2>
@@ -42,7 +42,7 @@ function Profile() {
             <input
               type="email"
               className="profile_email"
-              placeholder={email}
+              placeholder={profilemessages}
             />
             <ul className="profile_menu">
               <li>

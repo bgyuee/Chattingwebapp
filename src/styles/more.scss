@@ -1,9 +1,5 @@
 @import url(common.scss);
 
-.tab_bar > ul > li:nth-child(4) > a {
-  color: #513736;
-}
-
 .more_main {
   height: 85.8%;
   padding-top: 64px;
@@ -37,7 +33,7 @@
   .logout button {
     font-size: 30px;
     margin-right: 15px;
-    color: #513736;
+    color: #40bfb7;
     background: none;
     border: none;
     cursor: pointer;
@@ -63,7 +59,7 @@
           display: flex;
           flex-direction: column;
           align-items: center;
-          color: #513736;
+          color: #40bfb7;
           font-weight: bold;
           transition: transform 300ms linear 0s;
   
@@ -140,28 +136,6 @@
       }
     }
   
-    li {
-      span.app_icon {
-        display: block;
-        width: 44px;
-        height: 44px;
-        margin-bottom: 10px;
-        background: url(../images/empty.jpg) no-repeat 0 0;
-        background-size: cover;
-      }
-  
-      &:nth-child(1) .app_icon {
-        background-image: url(../images/kakaostory.png);
-      }
-  
-      &:nth-child(2) .app_icon {
-        background-image: url(../images/path.png);
-      }
-  
-      &:nth-child(3) .app_icon {
-        background-image: url(../images/kakaofriends.png);
-      }
-    }
   }
 }
 

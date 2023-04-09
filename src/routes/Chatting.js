@@ -1,21 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import Header from "components/Header";
-import {
-  FaPlus,
-  FaSmile,
-  FaMicrophone,
-  FaAngleLeft,
-  FaBars,
-} from "react-icons/fa";
+import {FaPlus,FaSmile,FaMicrophone,FaAngleLeft,FaBars} from "react-icons/fa";
 import { HiMagnifyingGlass } from "react-icons/hi2";
-import {
-  collection,
-  addDoc,
-  onSnapshot,
-  query,
-  orderBy,
-} from "firebase/firestore";
+import {collection,addDoc,onSnapshot,query,orderBy} from "firebase/firestore";
 import { db, storage } from "fbase";
 import Chatbox from "components/Chatbox";
 import { v4 as uuidv4 } from "uuid";
@@ -39,10 +27,10 @@ function Chatting({ userObj }) {
   const cStyle = { color: "#000", fontSize: 24 };
   const c = (
     <>
-      <Link to={"#"} style={cStyle}>
+      <Link style={cStyle}>
         <HiMagnifyingGlass />
       </Link>
-      <Link to={"#"} style={cStyle}>
+      <Link style={cStyle}>
         <FaBars />
       </Link>
     </>
@@ -54,14 +42,11 @@ function Chatting({ userObj }) {
   };
   /*링크로 데이터 받아옴*/
   const location = useLocation();
-  const { name, id, email, img, comment } = location.state;
+  const { name, id, email, img, comment, profilemessages } = location.state;
 
   //comment배열에서 각각의 comment 적용 일단 상대방채팅에 적용
   const commentList = comment.map((comment, index) => (
-    <span key={index} className="chat">
-      {comment}
-    </span>
-  ));
+    <span key={index} className="chat">{comment}</span>));
 
   /* 채팅입력값 */
   const [talk, setTalk] = useState(""); //firebase안으로 데이터를 넣는다
@@ -154,13 +139,13 @@ function Chatting({ userObj }) {
   return (
     <body className="chatting_body">
       <Header style={Headerstyle} a={a} b={b} c={c} />
-      <main className="chatiing_main">
+      <main className="chatiing_main scroll">
         <span className="date_info">Thursday,March 23, 2023</span>
         <div className="chat_box other">
           <div className="other_info">
             <Link
               to={`/profile/${id}`}
-              state={{ name, id, email, img, comment }}
+              state={{ name, id, email, img, comment, profilemessages }}
             >
               <span
                 className="profile_img empty"
@@ -186,30 +171,23 @@ function Chatting({ userObj }) {
         ))}
       </main>
       <footer>
-        <span className="plus_btn">
-          <Link>
-            <FaPlus />
-          </Link>
-        </span>
+        <label className="plus_btn" htmlFor="file">
+          <FaPlus />
+        </label>
         <form action="/" method="post" onSubmit={onSubmit}>
           <fieldset className="text_box">
             <legend className="blind">채팅 입력창</legend>
             <label htmlFor="chatting" className="blind">
               채팅입력
             </label>
-            <input
-              type="text"
-              id="chatting"
-              className="text_field"
-              value={talk}
-              onChange={onChange}
-            />
-            <input type="file" accept="image/*" onChange={onFilechange} />
-            <input type="submit" value="제출" />
+            <input className="text_field" type="text" id="chatting"
+              value={talk} onChange={onChange} />
+            <input className="blind" id="file" type="file" accept="image/*" onChange={onFilechange} />
+            <input type="submit" value="보내기" />
             {attachment && (
-              <div>
+              <div className="file_send">
                 <img src={attachment} width="10" height="10" alt="" />
-                <button onClick={onClearAttachment}>삭제</button>
+                <button onClick={onClearAttachment}>취소</button>
               </div>
             )}
             <span className="emoticon_btn">

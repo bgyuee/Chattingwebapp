@@ -53,7 +53,7 @@ function Auth() {
   }
   return (
     <div className='auth_wrap'>
-      <h2>LOGIN</h2>
+      <h2>{newAccount ? "Sign up" : "Login"}</h2>
       <Header style={{backgroundColor : "transparent"}} />
       <div className='auth_content'>
         <form onSubmit={onSubmit}>

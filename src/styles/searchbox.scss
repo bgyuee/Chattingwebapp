@@ -26,6 +26,9 @@
     background: transparent;
     border: none;
     padding: 0 15px;
+    &:focus{
+      outline-color: #40bfb7;
+    }
   }
   .search_inner > input::placeholder {
     text-align: center;

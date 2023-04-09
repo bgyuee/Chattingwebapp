@@ -68,14 +68,6 @@ function More(props) {
         </ul>
         
       </section>
-      <section className='more_app'>
-        <h2 className='blind'>앱 더보기</h2>
-        <ul>
-          <li><Link><span className='app_icon'></span>Kakao Story</Link></li>
-          <li><Link><span className='app_icon'></span>Path</Link></li>
-          <li><Link><span className='app_icon'></span>Kakao friends</Link></li>
-        </ul>
-      </section>
     </main>
     <Tab />
     </>

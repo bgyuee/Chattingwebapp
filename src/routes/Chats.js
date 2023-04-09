@@ -19,10 +19,18 @@ function Chats({userList}) {
           <header className="blind">
             <h2>Friends</h2>
           </header>
-          <ul>
+          <ul className="scroll">
           {userList.map((user,index) => 
               <li>
-              <Link to={`/chatting/${user.id}`} state={{name: user.name, id: user.id, email: user.email, img: user.images, comment:user.comment}}>
+              <Link to={`/chatting/${user.id}`} 
+              state={{
+                name: user.name, 
+                id: user.id, 
+                email: user.email, 
+                img: user.images, 
+                comment:user.comment, 
+                profilemessages:user.profilemessages
+                }}>
                 <span className="chats_img empty" style={{backgroundImage: `url(${user.images}`}}></span>
                 <span className="chats_cont">
                   <span className="chats_name">{user.name}</span>
