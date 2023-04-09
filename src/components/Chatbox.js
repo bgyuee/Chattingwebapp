@@ -59,16 +59,16 @@ function Chatbox(props) {
     </>) : (<></>)}
       {text && <span className='chat'>{text}</span>}
       {attachmentUrl !== "" && (
-          <img src={attachmentUrl} width='50' height='50' alt=''/>
+          <img src={attachmentUrl} width='100' height='100' alt=''/>
       )}
       <span className="chat_time">
         <span>{padNumber(hours)}</span>:<span>{padNumber(minutes)}</span>
       </span>
       {isOwner && (
-        <>
+        <div className='chatbox_btn'>
           <button onClick={onDeleteClick}>삭제</button>
           <button onClick={toggleEditing}>수정</button>
-        </>
+        </div>
       )}
     </div>
   )

@@ -14,6 +14,7 @@ function Myprofile({userObj}) {
 
   const [newDisplayName, setNewDisplayName] = useState(userObj.displayName);
   const [attachment, setAttachment] = useState(userObj.photoURL);
+  const [statemessage, setStatemessage] = useState("안녕하세요");
 
   console.log('userObj ->>>>', userObj);
   // const location = useLocation; //로케이션객체를 가져온다 //주소창에 데이터를 받는다
@@ -27,6 +28,11 @@ function Myprofile({userObj}) {
     setNewDisplayName(value);
   }
   
+  const newStatemessage = (e) => {
+    const message = e.target.value;
+    setStatemessage(message);
+  }
+
   const onFilechange = (e) => {
     const {target:{files}} = e;
     
@@ -51,7 +57,7 @@ function Myprofile({userObj}) {
   }
   await updateProfile(userObj, {
     displayName: newDisplayName,
-    photoURL: attachmentUrl || userObj.photoURL // 업로드한 이미지가 없는 경우, 기존 이미지 URL을 사용한다
+    photoURL: attachmentUrl || userObj.photoURL, // 업로드한 이미지가 없는 경우, 기존 이미지 URL을 사용한다
   });
 }
 
@@ -85,7 +91,7 @@ function Myprofile({userObj}) {
               </>
             )}
             <span className="profile_name">{newDisplayName}</span>
-            <input type="text" className="state_message" placeholder="미쳐야 미친다" />
+            <input type="text" className="state_message" placeholder={statemessage} onChange={newStatemessage} />
             <form onSubmit={onSubmit}>
               <input type="text" onChange={onChange} value={newDisplayName} placeholder={userObj.displayName} />
               <input type="file" accept="image/*" onChange={onFilechange} />

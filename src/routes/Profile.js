@@ -41,7 +41,7 @@ function Profile() {
             <span className="profile_name">{name}</span>
             <input
               type="email"
-              className="profile_email"
+              className="state_message"
               placeholder={profilemessages}
             />
             <ul className="profile_menu">

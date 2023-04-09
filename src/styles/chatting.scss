@@ -28,6 +28,24 @@ body.chatting_body{
   width: fit-content;
   max-width: calc(100% - 80px);
   position: relative;
+    .chatbox_btn{
+      display: flex;
+      justify-content: space-between;
+      width: 80px;
+        button{
+          width: 38px;
+          font-size: 11px;
+          color: #fff;
+          background-color: #40bfb7;
+          border: none;
+          border-radius: 6px;
+          cursor: pointer;
+          opacity: 0.8;
+            &:hover{
+              opacity: 1;
+            }
+        }
+    }
 }
 
 /*fit-content:내용물크기만큼*/
@@ -50,13 +68,13 @@ body.chatting_body{
   margin-right: 10px;
 
   .chat {
-    background: #ffe73a;
+    background: rgba(29, 219, 219, 0.4);
   }
 
   .chat_time {
     position: absolute;
     left: -30px;
-    bottom: -5px;
+    bottom: 0;
     width: 50px;
     opacity: 0.5;
   }
@@ -121,37 +139,76 @@ body.chatting_body{
         align-items: center;
         width: 100%;
         .text_field {
-          width: calc(70%);
+          width: 75%;
           height: 32px;
         }
-      .file_send{
-        position: fixed;
-        bottom: 4.7%;
-        left: 40px;
-        width: 100%;
-          img{
-            width: 160px;
-            height: 130px;
-          }
-      }
-      .emoticon_btn {
-        position: absolute;
-        right: 45px;
-          a {
-            color: #b3b4b4;
-          }
-      }
-      .voice_btn a {
-        display: block;
-        width: 34px;
-        height: 37px;
-        margin-right: 5px;
-        line-height: 37px;
-        text-align: center;
-        background: #ffe73a;
-        color: #513736;
-        font-size: 16px;
-      }
+        .file_send{
+          position: fixed;
+          bottom: 4.7%;
+          left: 40px;
+          width: 100%;
+            img{
+              width: 160px;
+              height: 130px;
+            }
+            button{
+              position: absolute;
+              bottom: 0;
+              width: 38px;
+              font-size: 11px;
+              color: #fff;
+              background-color: #40bfb7;
+              border: none;
+              border-radius: 6px;
+              cursor: pointer;
+              opacity: 0.8;
+                &:hover{
+                  opacity: 1;
+            }
+            }
+        }
+        .chat_submit{
+          width: 60px;
+          height: 30px;
+          display: flex;
+          justify-content: center;
+          font-weight: 600;
+          color: #fff;
+          border: none;
+          border-radius: 24px;
+          background-color: #40bfb7;
+          opacity: 0.8;
+          cursor: pointer;
+            &:hover{
+              opacity: 1;
+            }
+        }
+        .emoticon_btn {
+          position: absolute;
+          right: 25%;
+            a {
+              color: #b3b4b4;
+            }
+              &:hover{
+                transform: scale(1.2);
+              }
+        }
+        .voice_btn a {
+          display: block;
+          width: 34px;
+          height: 37px;
+          margin-right: 5px;
+          line-height: 37px;
+          text-align: center;
+          background: #000;
+          border-radius: 50%;
+          color: #fff;
+          font-size: 16px;
+          opacity: 0.8;
+            &:hover{
+              opacity: 1;
+            }
+        }
       }
     }
 }

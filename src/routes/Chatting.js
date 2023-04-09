@@ -51,6 +51,7 @@ function Chatting({ userObj }) {
   /* 채팅입력값 */
   const [talk, setTalk] = useState(""); //firebase안으로 데이터를 넣는다
   const [talks, setTalks] = useState([]); //querySnapshot에서 데이터들을 배열로 하나하나 들고오겠다.
+  console.log('talkstalkstalkstalkstalks',talks);
   const [attachment, setAttachment] = useState(""); //공백문자도 처음에는 false
   // const filterTalks = talks.filter(talk => talk.id === userListId);
   // console.log('filterTalks --->>>>', filterTalks);
@@ -183,7 +184,7 @@ function Chatting({ userObj }) {
             <input className="text_field" type="text" id="chatting"
               value={talk} onChange={onChange} />
             <input className="blind" id="file" type="file" accept="image/*" onChange={onFilechange} />
-            <input type="submit" value="보내기" />
+            <input className="chat_submit" type="submit" value="전송" />
             {attachment && (
               <div className="file_send">
                 <img src={attachment} width="10" height="10" alt="" />
@@ -191,12 +192,12 @@ function Chatting({ userObj }) {
               </div>
             )}
             <span className="emoticon_btn">
-              <Link to={"#"}>
+              <Link>
                 <FaSmile />
               </Link>
             </span>
             <span className="voice_btn">
-              <Link to={"#"}>
+              <Link>
                 <FaMicrophone />
               </Link>
             </span>
