@@ -55,6 +55,7 @@ function Auth() {
     <div className='auth_wrap'>
       <h2>{newAccount ? "Sign up" : "Login"}</h2>
       <Header style={{backgroundColor : "transparent"}} />
+      {error && <div className="error">{error}</div>}
       <div className='auth_content'>
         <form onSubmit={onSubmit}>
           <input className='auth_email' name='email' type='email' placeholder='이메일' required 
