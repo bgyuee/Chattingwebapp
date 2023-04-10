@@ -51,8 +51,11 @@
   }
   .profile_name {
     position: absolute;
+    display: block;
     top: -125px;
-    left: 85px;
+    left: calc(50% - 50px);
+    text-align: center;
+    width: 100px;
     font-size: 16px;
   }
   
