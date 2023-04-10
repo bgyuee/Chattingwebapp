@@ -26,7 +26,7 @@ function Main({ userList, userObj }) {
                 <Link to={`/myprofile`}>
                   <span className="profile_img empty" style={userObj.photoURL? {backgroundImage:`url(${userObj.photoURL})`} : {backgroundImage:''}}></span>
                   <span className="profile_name">{userObj.displayName}</span>
-                  <span className="profile_messages">배고파~</span>
+                  <span className="profile_messages">안녕하세요</span>
                 </Link>
               </li>
             </ul>

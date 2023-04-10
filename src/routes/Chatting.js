@@ -55,7 +55,6 @@ function Chatting({ userObj }) {
   const [attachment, setAttachment] = useState(""); //공백문자도 처음에는 false
   // const filterTalks = talks.filter(talk => talk.id === userListId);
   // console.log('filterTalks --->>>>', filterTalks);
-  console.log("talk 왜안대ㅐㅐㅐㅐㅐㅐㅐㅐㅐㅐㅐ", talks);
 
   // talks섹션안에 있는 db들을 가져오고 createdAt값들을 내림차순으로 정렬한다 desc는 내림차순 asc는 오름차순
   useEffect(() => {

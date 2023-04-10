@@ -87,14 +87,15 @@ function Myprofile({userObj}) {
           <div className="profile_cont">
           {attachment && (
               <>
-                <button onClick={onDeleteClick}>프로필사진 삭제</button>
+                <button className="profileImg_btn" onClick={onDeleteClick}>삭제</button>
               </>
             )}
             <span className="profile_name">{newDisplayName}</span>
+            <label className="profileImg_add" htmlFor="profileImg_add">프사변경</label>
             <input type="text" className="state_message" placeholder={statemessage} onChange={newStatemessage} />
             <form onSubmit={onSubmit}>
-              <input type="text" onChange={onChange} value={newDisplayName} placeholder={userObj.displayName} />
-              <input type="file" accept="image/*" onChange={onFilechange} />
+              <input type="text" className="input_name" onChange={onChange} placeholder="이름을 적어주세요." />
+              <input id="profileImg_add" className="blind" type="file" accept="image/*" onChange={onFilechange} />
             </form>
             <ul className="profile_menu">
               <li>

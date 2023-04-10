@@ -8,6 +8,7 @@ import "styles/background.scss";
 
 function Background({userObj}) {
   const [attachment, setAttachment] = useState(backgroundImg);
+  const [newbackground, setNewbackground] = useState("");
 
   useEffect(() => {
     const q = query(collection(db, `${userObj.uid}backgroundImg`),
@@ -19,6 +20,7 @@ function Background({userObj}) {
       });
       if (newArray.length > 0) {
         setAttachment(newArray[0].attachmentUrl);
+        setNewbackground(newArray[0].attachmentUrl);
       }
     });
       },[userObj.uid]);
@@ -78,10 +80,26 @@ function Background({userObj}) {
     <section className="background" style={{backgroundImage : `url(${attachment})`}}>
       <h2 className="blind">My porifile background image</h2>
       <form onSubmit={onSubmit}>
-        <input type="file" accept="image/*" onChange={onFilechange} />
-        <input type="submit" value="수정하기" />
+        <input
+         id='background_add'
+         className='blind'
+         type="file"
+         accept="image/*"
+         onChange={onFilechange} 
+         />
+         {
+            attachment === backgroundImg ? (
+              <>
+                <label className='background_btn' htmlFor='background_add'>배경화면</label>
+              </>
+            ) : (
+              <>
+                {newbackground === "" && <input type="submit" value="수정하기" />}
+                {newbackground !== "" && <button onClick={onDeleteClick}>배경삭제</button>}
+              </>
+            )
+          }
       </form>
-      <button onClick={onDeleteClick}>배경 삭제</button>
     </section>
   )
 }

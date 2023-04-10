@@ -9,10 +9,36 @@
     background-size: cover;
         form{
             position: absolute;
-            top: 20%;
-        }
-        button{
-            position: absolute;
-            top: 50%;
+            top: 7%;
+            left: 15px;
+            .background_btn{
+                display: block;
+                width: 85px;
+                height: 40px;
+                line-height: 40px;
+                text-align: center;
+                font-size: 13px;
+                color: #fff;
+                background-color: #40bfb7;
+                border-radius: 6px;
+                opacity: 0.8;
+                cursor: pointer;
+                &:hover{
+                    opacity: 1;
+                }
+            }
+            input[type=submit],button{
+                width: 80px;
+                height: 40px;
+                background-color: #40bfb7;
+                border: none;
+                border-radius: 6px;
+                color: #fff;
+                opacity: 0.8;
+                cursor: pointer;
+                &:hover{
+                    opacity: 1;
+                }
+            }
         }
   }

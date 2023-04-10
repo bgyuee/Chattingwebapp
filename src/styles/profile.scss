@@ -32,17 +32,31 @@
   }
   
   .profile_cont {
+    position: relative;
     display: flex;
     flex-direction: column;
     align-items: center;
     margin-top: 45px;
   }
-  
+  .profileImg_btn{
+    position: absolute;
+    top: 0;
+    right: 50px;
+    width: 50px;
+    color: #fff;
+    background-color: #40bfb7;
+    border-radius: 12px;
+    border: none;
+    cursor: pointer;
+  }
   .profile_name {
+    position: absolute;
+    top: -125px;
+    left: 85px;
     font-size: 16px;
   }
   
-  .state_message{
+  .state_message, .input_name{
      background-color: transparent;
       &::placeholder{
         color: aquamarine;
@@ -50,6 +64,26 @@
       &:focus{
         outline-color:transparent;
       }
+  }
+
+  .state_message{
+    width: 300px !important;
+    transform: translateY(10px);
+  }
+
+  .profileImg_add{
+    position: absolute;
+    left: 40px;
+    
+    display: block;
+    width: 60px;
+    height: 20px;
+    line-height: 20px;
+    background-color: #40bfb7;
+    color: #fff;
+    border-radius: 12px;
+    text-align: center;
+    cursor: pointer;
   }
 
   .profile_cont input {
@@ -82,8 +116,8 @@
         line-height: 52px;
         text-align: center;
         margin-bottom: 15px;
-        background: #f2f2f2;
-        color: #513736;
+        background: #fff;
+        color: #000;
         font-size: 20px;
         opacity: 0.8;
         border: 2px solid #fff;
