@@ -12,6 +12,7 @@
       height: 93%;
       overflow: auto;
       border-top: 1px solid #ebebeb;
+      background-color: #fff;
         li{
           border-bottom: 1px solid #ebebeb;
           box-sizing: border-box;
@@ -63,15 +64,14 @@
     align-items: center;
     width: 60px;
     height: 60px;
-    background: #ffe84c;
+    background: #000;
     border-radius: 50%;
     box-shadow: 0 2px 6px #0004;
     font-size: 18px;
-    color: #513736;
+    color: #fff;
     transition: color 300ms linear 0s, background 300ms linear 0s;
       &:hover{
         background: #513736;
-        color: #ffe84c;
       }
   }
 }

@@ -5,17 +5,16 @@ import { FaComment, FaPencilAlt, FaUser, FaCamera, FaCheck} from "react-icons/fa
 import { HiOutlineX } from "react-icons/hi";
 import "styles/profile.scss";
 import { updateProfile } from "firebase/auth";
-import { db, storage } from "fbase";
+import { storage } from "fbase";
 import { v4 as uuidv4 } from 'uuid';
 import { deleteObject, getDownloadURL, ref, uploadString } from "firebase/storage";
 import Background from "components/Background";
-import { addDoc, collection } from "firebase/firestore";
 
-function Myprofile({userObj, statemessage, setStatemessage}) {
+function Myprofile({userObj}) {
 
   const [newDisplayName, setNewDisplayName] = useState(userObj.displayName);
   const [attachment, setAttachment] = useState(userObj.photoURL);
-  
+  const [statemessage, setStatemessage] = useState("안녕하세요");
   const [profileImageok,setProfileImageok] = useState(false);
   const [profileok, setProfielok] = useState(false);
 
@@ -23,7 +22,7 @@ function Myprofile({userObj, statemessage, setStatemessage}) {
   // const location = useLocation; //로케이션객체를 가져온다 //주소창에 데이터를 받는다
   // console.log(location);
   const a = <Link to="#" className="blind">Profile</Link>
-  const b = <Link to="/"><HiOutlineX style={{color:"#000"}} /></Link>
+  const b = <Link to="/"><HiOutlineX /></Link>
   const c = <Link to="#"><FaUser /></Link>
 
   const onChange = (e) => {
@@ -63,12 +62,7 @@ function Myprofile({userObj, statemessage, setStatemessage}) {
     displayName: newDisplayName,
     photoURL: attachmentUrl || userObj.photoURL, // 업로드한 이미지가 없는 경우, 기존 이미지 URL을 사용한다
   });
-  
-  const docRef = await addDoc(collection(db, `${userObj.uid}statemessage`), {
-    creatorId: userObj.uid,
-    createdAt: Date.now(),
-    statemessage:statemessage
-  });
+
   
   } catch(e) {
     console.error("Error adding document: ", e);
@@ -101,20 +95,18 @@ function Myprofile({userObj, statemessage, setStatemessage}) {
           <div className="profile_imges empty" style={attachment? {backgroundImage:`url(${attachment})`} : {backgroundImage:''}}>
           {profileok && <span className="profile_images_icon" onClick={() => setProfileImageok(prev => !prev)}><FaCamera /></span>}
           </div>
+         
           <div className="profile_cont">
             {attachment && profileImageok && 
             <button className="profileImg_btn" onClick={onDeleteClick}>삭제</button>
             }
-            <div className="profie__info">
-              <span className="profile_name">{newDisplayName}</span>
-              <span className="statemessage">{statemessage}</span>
-            </div>
+            <span className="profile_name">{newDisplayName}</span>
             {profileImageok && profileok&& <label className="profileImg_add" htmlFor="profileImg_add">찾아보기</label>}
             <form onSubmit={onSubmit}>
                {profileok&& 
                 <>
                    <input type="text" className="input_name" onChange={onChange} placeholder="이름을 입력해주세요" />
-                   <input type="text" className="state_message" onChange={newStatemessage} placeholder="상태메세지를 입력해주세요" />
+                   <input type="text" className="state_message" placeholder={statemessage} onChange={newStatemessage} />
                 </>
                }
               

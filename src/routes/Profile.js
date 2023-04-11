@@ -38,12 +38,10 @@ function Profile() {
           <h2 className="blind">my profile info</h2>
           <div className="profile_imges empty" style={{ backgroundImage: `url(${img}` }}></div>
           <div className="profile_cont">
-            <span className="profile_name">{name}</span>
-            <input
-              type="email"
-              className="state_message"
-              placeholder={profilemessages}
-            />
+            <div className="profie__info">
+              <span className="profile_name">{name}</span>
+              <span className="statemessage">{profilemessages}</span>
+            </div>
             <ul className="profile_menu">
               <li>
                 <Link to={`/chatting/${id}`} state={{name, id, email, img, comment, index}}>

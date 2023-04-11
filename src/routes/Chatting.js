@@ -18,13 +18,13 @@ function Chatting({ userObj }) {
       Friends <span>1</span>
     </>
   );
-  const bStyle = { color: "#000", opacity: 1, fontSize: 24, paddingLeft: 5 };
+  const bStyle = { color: "#fff", opacity: 1, fontSize: 24, paddingLeft: 5 };
   const b = (
     <Link to={"/chats"} style={bStyle}>
       <FaAngleLeft />
     </Link>
   );
-  const cStyle = { color: "#000", fontSize: 24 };
+  const cStyle = { color: "#fff", fontSize: 24 };
   const c = (
     <>
       <Link style={cStyle}>
@@ -36,8 +36,7 @@ function Chatting({ userObj }) {
     </>
   );
   const Headerstyle = {
-    color: "#000",
-    backgroundColor: "#a1c0d5",
+    color: "#fff",
     borderBottom: "1px solid #96acba",
   };
   /*링크로 데이터 받아옴*/
@@ -46,7 +45,7 @@ function Chatting({ userObj }) {
 
   //comment배열에서 각각의 comment 적용 일단 상대방채팅에 적용
   const commentList = comment.map((comment, index) => (
-    <span key={index} className="chat">{comment}</span>));
+    <div key={index} className="chat">{comment}</div>));
 
   /* 채팅입력값 */
   const [talk, setTalk] = useState(""); //firebase안으로 데이터를 넣는다

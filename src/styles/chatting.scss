@@ -3,6 +3,7 @@
 
 /* header */
 body.chatting_body{
+  background-color: #fff;
 /* main */
 
 .chatiing_main {
@@ -36,7 +37,7 @@ body.chatting_body{
           width: 38px;
           font-size: 11px;
           color: #fff;
-          background-color: #40bfb7;
+          background-color: #000;
           border: none;
           border-radius: 6px;
           cursor: pointer;
@@ -68,7 +69,7 @@ body.chatting_body{
   margin-right: 10px;
 
   .chat {
-    background: rgba(29, 219, 219, 0.4);
+    border: 1px solid #000;
   }
 
   .chat_time {
@@ -99,6 +100,11 @@ body.chatting_body{
       display: block;
       font-weight: bold;
       margin: 5px;
+    }
+
+    .chat{
+      border: 1px solid #000;
+      
     }
     
     .other .chat_time {
@@ -157,7 +163,7 @@ body.chatting_body{
               width: 38px;
               font-size: 11px;
               color: #fff;
-              background-color: #40bfb7;
+              background-color: #000;
               border: none;
               border-radius: 6px;
               cursor: pointer;
@@ -176,7 +182,7 @@ body.chatting_body{
           color: #fff;
           border: none;
           border-radius: 24px;
-          background-color: #40bfb7;
+          background-color: #000;
           opacity: 0.8;
           cursor: pointer;
             &:hover{

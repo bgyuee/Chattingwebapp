@@ -30,6 +30,14 @@
     height: 100px;
     margin-left: -50px;
   }
+
+  .profile_images_icon{
+    position: absolute;
+    bottom: 2%;
+    right: 5%;
+    font-size: 15px;
+    cursor: pointer;
+  }
   
   .profile_cont {
     position: relative;
@@ -44,34 +52,57 @@
     right: 50px;
     width: 50px;
     color: #fff;
-    background-color: #40bfb7;
+    background-color: #000;
     border-radius: 12px;
     border: none;
     cursor: pointer;
   }
-  .profile_name {
-    position: absolute;
-    display: block;
-    top: -125px;
-    left: calc(50% - 50px);
-    text-align: center;
-    width: 100px;
-    font-size: 16px;
+
+ .profie__info{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    .profile_name{
+      margin-top: 5px;
+      font-size: 16px;
+      font-weight: 600;
+    }
+    .statemessage{
+      margin-top: 10px;
+      margin-bottom: 10px;
+      width: auto;
+      font-weight: 600;
+      color: #fff;
+    }
   }
+  // .profile_name {
+  //   position: absolute;
+  //   display: block;
+  //   top: 20px;
+  //   text-align: center;
+  //   width: 100px;
+  //   font-size: 16px;
+  //   font-weight: 600;
+  // }
+  // .statemessage{
+  //   position: absolute;
+  //   display: block;
+  //   top: 44px;
+  //   font-weight: 600;
+  //   color: #808080;
+  // }
   
-  .state_message, .input_name{
+   .input_name{
+    width: 100%;
      background-color: transparent;
+     border: 1px solid #000 !important;
+     border-radius: 6px;
       &::placeholder{
-        color: aquamarine;
+        color: #000;
       }
       &:focus{
         outline-color:transparent;
       }
-  }
-
-  .state_message{
-    width: 300px !important;
-    transform: translateY(10px);
   }
 
   .profileImg_add{
@@ -82,11 +113,18 @@
     width: 60px;
     height: 20px;
     line-height: 20px;
-    background-color: #40bfb7;
+    background-color: #000;
     color: #fff;
     border-radius: 12px;
     text-align: center;
     cursor: pointer;
+  }
+  .profile form{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 50px;
+    width: 260px;
   }
 
   .profile_cont input {
@@ -128,7 +166,7 @@
         transition: all 0.1s ease-in-out 0s;
          &:hover{
           opacity: 1;
-          border: 2px solid #40bfb7;
+          border: 2px solid #000;
          }
       }
     }
