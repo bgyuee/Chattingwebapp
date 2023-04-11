@@ -1,16 +1,16 @@
 {
   "files": {
-    "main.css": "/Chattingwebapp/static/css/main.cb7a79f1.css",
-    "main.js": "/Chattingwebapp/static/js/main.d063de3c.js",
+    "main.css": "/Chattingwebapp/static/css/main.c67a6dd2.css",
+    "main.js": "/Chattingwebapp/static/js/main.8798b80e.js",
     "static/media/bg_default.jpg": "/Chattingwebapp/static/media/bg_default.e4ec15a68431ec0ec28f.jpg",
     "static/media/github.png": "/Chattingwebapp/static/media/github.b56d071c48c7803e555e.png",
     "static/media/google.png": "/Chattingwebapp/static/media/google.b29f36ea5ff9ae56d937.png",
     "index.html": "/Chattingwebapp/index.html",
-    "main.cb7a79f1.css.map": "/Chattingwebapp/static/css/main.cb7a79f1.css.map",
-    "main.d063de3c.js.map": "/Chattingwebapp/static/js/main.d063de3c.js.map"
+    "main.c67a6dd2.css.map": "/Chattingwebapp/static/css/main.c67a6dd2.css.map",
+    "main.8798b80e.js.map": "/Chattingwebapp/static/js/main.8798b80e.js.map"
   },
   "entrypoints": [
-    "static/css/main.cb7a79f1.css",
-    "static/js/main.d063de3c.js"
+    "static/css/main.c67a6dd2.css",
+    "static/js/main.8798b80e.js"
   ]
 }
