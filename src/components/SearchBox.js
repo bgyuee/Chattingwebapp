@@ -8,7 +8,7 @@ function SearchBox() {
       <fieldset className='search_inner'>
         <legend className='blind'>검색창</legend>
         <MdSearch />
-        <input type="search" name="search" id="search" placeholder="Find firends, chats, Plus Friends" />
+        <input type="search" name="search" id="search" placeholder="Find friends, chats, Plus Friends" />
       </fieldset>
     </form>
   )
