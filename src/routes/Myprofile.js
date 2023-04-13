@@ -40,7 +40,6 @@ function Myprofile({userObj, statemessage, setStatemessage}) {
     const {target:{files}} = e;
     
     const theFile = files[0]; //현재 업로드한 이미지
-    console.log('여기기기기기', theFile); //jpg
 
     const reader = new FileReader();
     reader.onloadend = (finishedEvent) => { //파일을 다 읽고 나서 파라미터에 데이터가 들어온다
@@ -78,17 +77,17 @@ function Myprofile({userObj, statemessage, setStatemessage}) {
 
   const onDeleteClick = async () => {
     const ok = window.confirm("삭제하시겠습니까?");
-   if(ok) {
-    if(attachment !=="") {
-      const desertRef = ref(storage, attachment);
-      await deleteObject(desertRef);
-      await updateProfile(userObj, {
-        photoURL: "",
-      })
+    if(ok) {
+      setAttachment("");
+      if(attachment !=="") {
+        const desertRef = ref(storage, attachment);
+        await deleteObject(desertRef);
+        await updateProfile(userObj, {
+          photoURL: "",
+        })
+      }
     }
-    setAttachment("");
-   }
-  }
+    }
 
 
   return (
