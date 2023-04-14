@@ -13,8 +13,7 @@ function Auth() {
   const [error, setError] = useState('');
 
   const onChange = (e) => {
-    console.log('e.target.name ->', e.target.name);
-    console.log(e);
+    // console.log('e.target.name ->', e.target.name);
     const {target:{name, value}} = e; //구조분해 할당으로 데이터를 가져온다
     if(name === 'email'){
       setEmail(value);

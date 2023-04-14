@@ -14,7 +14,7 @@ import { db } from 'fbase';
 
 function AppRouter({isLoggedIn, userObj}) {
   const [statemessage, setStatemessage] = useState("");
-  console.log('userObj->>>>>>>>', userObj);
+  console.log('userObj->', userObj);
   useEffect(() => {
     if (userObj) { // userObj가 null이 아닐 때만 실행
       const q = query(collection(db, `${userObj.uid}statemessage`), orderBy("createdAt", "desc")) //내림차순
@@ -31,13 +31,12 @@ function AppRouter({isLoggedIn, userObj}) {
     }
   }, [userObj]);
 
-
   return (
     <BrowserRouter basename={process.env.PUBLIC_URL}>
       <Routes>
         {isLoggedIn ? 
-        <>
-          (<Route path='/' element={<Main userList={userList} userObj={userObj} statemessage={statemessage} />} />) 
+        (<>
+          <Route path='/' element={<Main userList={userList} userObj={userObj} statemessage={statemessage} />} />
           <Route path="/chats" element={<Chats userList={userList} />} />
           <Route path="/chatting/:id" element={<Chatting userObj={userObj} />} />
           <Route path="/find" element={<Find />} />
@@ -45,7 +44,7 @@ function AppRouter({isLoggedIn, userObj}) {
           <Route path="/profile" element={<Profile userList={userList} />} />
           <Route path="/myprofile" element={<Myprofile userObj={userObj} statemessage={statemessage} setStatemessage={setStatemessage} />} />
           <Route path="/profile/:id" element={<Profile />} />
-        </>
+        </>)
         : (<Route path='/' element={<Auth />} />)}
        
       </Routes>
