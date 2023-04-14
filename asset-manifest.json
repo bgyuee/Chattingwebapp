@@ -1,16 +1,16 @@
 {
   "files": {
     "main.css": "/Chattingwebapp/static/css/main.73f4afff.css",
-    "main.js": "/Chattingwebapp/static/js/main.10535df7.js",
+    "main.js": "/Chattingwebapp/static/js/main.91a79b10.js",
     "static/media/bg_default.jpg": "/Chattingwebapp/static/media/bg_default.e4ec15a68431ec0ec28f.jpg",
     "static/media/github.png": "/Chattingwebapp/static/media/github.b56d071c48c7803e555e.png",
     "static/media/google.png": "/Chattingwebapp/static/media/google.b29f36ea5ff9ae56d937.png",
     "index.html": "/Chattingwebapp/index.html",
     "main.73f4afff.css.map": "/Chattingwebapp/static/css/main.73f4afff.css.map",
-    "main.10535df7.js.map": "/Chattingwebapp/static/js/main.10535df7.js.map"
+    "main.91a79b10.js.map": "/Chattingwebapp/static/js/main.91a79b10.js.map"
   },
   "entrypoints": [
     "static/css/main.73f4afff.css",
-    "static/js/main.10535df7.js"
+    "static/js/main.91a79b10.js"
   ]
 }
