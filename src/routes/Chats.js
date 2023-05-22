@@ -21,7 +21,7 @@ function Chats({userList}) {
           </header>
           <ul className="scroll">
           {userList.map((user,index) => 
-              <li>
+              <li key={user.id}>
               <Link to={`/chatting/${user.id}`} 
               state={{
                 name: user.name, 
